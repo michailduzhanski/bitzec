@@ -66,8 +66,8 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 
 static CBlock CreateGenesisBlock(uint32_t nTime, const uint256& nNonce, const std::vector<unsigned char>& nSolution, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp ="Bitzec6028c7b3ef33e2e036027f241fa0a396ed17ed90e7c7e264132ee59a34035baf" ;
-    const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
+    const char* pszTimestamp ="Arnak12ec09992caa4e9654162692c5ca2ddeb385a462974fdc660df08e23ae870d4c" ;
+    const CScript genesisOutputScript = CScript() << ParseHex("045d5f19f31313a629158bb6dbcde0fee7e01b0f027711353b5d8ad4edeed2c2817ba5b20991a4a6acb8aa65d6de47c1dfce98b8ebd7993fc4f3c2b61cd40074c2") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nSolution, nBits, nVersion, genesisReward);
 }
 
@@ -130,7 +130,7 @@ public:
         pchMessageStart[1] = 0xe7;
         pchMessageStart[2] = 0x27;
         pchMessageStart[3] = 0x61;
-        vAlertPubKey = ParseHex("04b7ecf0baa90495ceb4e4090f6b2fd37eec1e9c85fac68a487f3ce11589692e4a317479316ee814e066638e1db54e37a10689b70286e6315b1087b6615d179264");
+        vAlertPubKey = ParseHex("04dca46fa5ca4600ab464f748967f34ee5134f477169d9818467f7abd79cb824ad3d51672c366864ae397b2d01819715c21ad2313cc095928658b5bf5ea1c545eb");
         nDefaultPort = 15203;
         nPruneAfterHeight = 100000;
 
