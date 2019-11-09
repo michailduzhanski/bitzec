@@ -44,11 +44,11 @@ reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equiv
 config file):
 
 	HiddenServiceDir /var/lib/tor/zcash-service/
-	HiddenServicePort 8733 127.0.0.1:8733
-	HiddenServicePort 18733 127.0.0.1:18733
+	HiddenServicePort 15203 127.0.0.1:15203
+	HiddenServicePort 15213 127.0.0.1:15213
 
 The directory can be different of course, but (both) port numbers should be equal to
-your zcashd's P2P listen port (8733 by default).
+your zcashd's P2P listen port (15203 by default).
 
 	-externalip=X   You can tell Zcash about its publicly reachable address using
 	                this option, and this can be a .onion address. Given the above

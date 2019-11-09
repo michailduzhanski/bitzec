@@ -131,7 +131,7 @@ public:
         pchMessageStart[2] = 0x27;
         pchMessageStart[3] = 0x61;
         vAlertPubKey = ParseHex("04b7ecf0baa90495ceb4e4090f6b2fd37eec1e9c85fac68a487f3ce11589692e4a317479316ee814e066638e1db54e37a10689b70286e6315b1087b6615d179264");
-        nDefaultPort = 8733;
+        nDefaultPort = 15203;
         nPruneAfterHeight = 100000;
 
         genesis = CreateGenesisBlock(
@@ -146,9 +146,9 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
         //vSeeds.push_back(CDNSSeedData("bitzec.org", "seed.bitzec.org")); //
-        vSeeds.push_back(CDNSSeedData("35.242.189.203", "35.242.189.203"));
-        vSeeds.push_back(CDNSSeedData("151.106.63.210", "151.106.63.210")); //seed node  equihub
-        vSeeds.push_back(CDNSSeedData("bzcseed.raptorpool.org", "bzcseed.raptorpool.org")); // seed node  raptorpool
+        //vSeeds.push_back(CDNSSeedData("35.242.189.203", "35.242.189.203"));
+        //vSeeds.push_back(CDNSSeedData("151.106.63.210", "151.106.63.210")); //seed node  equihub
+        //vSeeds.push_back(CDNSSeedData("bzcseed.raptorpool.org", "bzcseed.raptorpool.org")); // seed node  raptorpool
 
 
 
@@ -330,7 +330,7 @@ public:
         pchMessageStart[2] = 0xf9;
         pchMessageStart[3] = 0xbf;
         vAlertPubKey = ParseHex("044e7a1553392325c871c5ace5d6ad73501c66f4c185d6b0453cf45dec5a1322e705c672ac1a27ef7cdaf588c10effdf50ed5f95f85f2f54a5f6159fca394ed0c6");
-        nDefaultPort = 18733;
+        nDefaultPort = 15213;
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(
