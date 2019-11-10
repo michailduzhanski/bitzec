@@ -1,1 +1,1 @@
-dist_man1_MANS=bitzecd.1 bitzec-cli.1 zcash-fetch-params.1 bitzec-tx.1
+dist_man1_MANS=arnakd.1 arnak-cli.1 zcash-fetch-params.1 arnak-tx.1

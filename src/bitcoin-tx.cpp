@@ -48,10 +48,10 @@ static int AppInitRawTx(int argc, char* argv[])
     if (argc<2 || mapArgs.count("-?") || mapArgs.count("-h") || mapArgs.count("-help"))
     {
         // First part of help message is specific to this utility
-        std::string strUsage = _("Bitzec bitzec-tx utility version") + " " + FormatFullVersion() + "\n\n" +
+        std::string strUsage = _("Arnak arnak-tx utility version") + " " + FormatFullVersion() + "\n\n" +
             _("Usage:") + "\n" +
-              "  bitzec-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded zcash transaction") + "\n" +
-              "  bitzec-tx [options] -create [commands]   " + _("Create hex-encoded zcash transaction") + "\n" +
+              "  arnak-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded zcash transaction") + "\n" +
+              "  arnak-tx [options] -create [commands]   " + _("Create hex-encoded zcash transaction") + "\n" +
               "\n";
 
         fprintf(stdout, "%s", strUsage.c_str());

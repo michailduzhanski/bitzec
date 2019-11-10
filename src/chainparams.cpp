@@ -55,7 +55,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 
  /**
  *
- *  >>> 'Bitzec' (b'the binary digit zero knowledge electronic currency')
+ *  >>> 'Arnak' (b'the binary digit zero knowledge electronic currency')
  *
  * CBlock(hash=00040fe8, ver=4, hashPrevBlock=00000000000000, hashMerkleRoot=c4eaa5, nTime=1573320600, nBits=1f07ffff, nNonce=4695, vtx=1)
  *   CTransaction(hash=c4eaa5, ver=1, vin.size=1, vout.size=1, nLockTime=0)
@@ -88,11 +88,11 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        strCurrencyUnits = "BZC"; // the binary digit zero knowledge electronic currency
+        strCurrencyUnits = "ARK"; // the binary digit zero knowledge electronic currency
         bip44CoinType = 133; // As registered in https://github.com/satoshilabs/slips/blob/master/slip-0044.md
         consensus.fCoinbaseMustBeProtected = true;
         consensus.nSubsidySlowStartInterval = 7;
-        consensus.nSubsidyHalvingInterval = 13000001;
+        consensus.nSubsidyHalvingInterval = 1000000;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 4000;
@@ -105,7 +105,7 @@ public:
         assert(maxUint/UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.nPowMaxAdjustDown = 32; // 32% adjustment down
         consensus.nPowMaxAdjustUp = 16; // 16% adjustment up
-        consensus.nPowTargetSpacing = 2.5 * 60;
+        consensus.nPowTargetSpacing = 1 * 60;
         consensus.nPowAllowMinDifficultyBlocksAfterHeight = boost::none;
         consensus.vUpgrades[Consensus::BASE_SPROUT].nProtocolVersion = 170002;
         consensus.vUpgrades[Consensus::BASE_SPROUT].nActivationHeight =
@@ -149,7 +149,7 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        //vSeeds.push_back(CDNSSeedData("bitzec.org", "seed.bitzec.org")); //
+        //vSeeds.push_back(CDNSSeedData("arnak.org", "seed.arnak.org")); //
         //vSeeds.push_back(CDNSSeedData("35.242.189.203", "35.242.189.203"));
         //vSeeds.push_back(CDNSSeedData("151.106.63.210", "151.106.63.210")); //seed node  equihub
         //vSeeds.push_back(CDNSSeedData("bzcseed.raptorpool.org", "bzcseed.raptorpool.org")); // seed node  raptorpool

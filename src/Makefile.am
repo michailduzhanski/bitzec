@@ -92,11 +92,11 @@ noinst_PROGRAMS =
 TESTS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += bitzecd
+  bin_PROGRAMS += arnakd
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += bitzec-cli bitzec-tx
+  bin_PROGRAMS += arnak-cli arnak-tx
 endif
 
 LIBZCASH_H = \
@@ -240,7 +240,7 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: bitzecd
+# server: arnakd
 libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
@@ -300,7 +300,7 @@ libbitcoin_proton_a_SOURCES = \
   amqp/amqppublishnotifier.cpp
 endif
 
-# wallet: bitzecd, but only linked when wallet enabled
+# wallet: arnakd, but only linked when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_wallet_a_SOURCES = \
@@ -430,16 +430,16 @@ nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # bitcoind binary #
-bitzecd_SOURCES = bitcoind.cpp
-bitzecd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-bitzecd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitzecd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+arnakd_SOURCES = bitcoind.cpp
+arnakd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+arnakd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+arnakd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-bitzecd_SOURCES += bitcoind-res.rc
+arnakd_SOURCES += bitcoind-res.rc
 endif
 
-bitzecd_LDADD = \
+arnakd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_WALLET) \
   $(LIBBITCOIN_COMMON) \
@@ -454,7 +454,7 @@ bitzecd_LDADD = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-bitzecd_LDADD += \
+arnakd_LDADD += \
   $(BOOST_LIBS) \
   $(BDB_LIBS) \
   $(SSL_LIBS) \
@@ -467,16 +467,16 @@ bitzecd_LDADD += \
   $(LIBZCASH_LIBS)
 
 # bitcoin-cli binary #
-bitzec_cli_SOURCES = bitcoin-cli.cpp
-bitzec_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-bitzec_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitzec_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+arnakd_cli_SOURCES = bitcoin-cli.cpp
+arnakd_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+arnakd_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+arnakd_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-bitzec_cli_SOURCES += bitcoin-cli-res.rc
+arnakd_cli_SOURCES += bitcoin-cli-res.rc
 endif
 
-bitzec_cli_LDADD = \
+arnakd_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
@@ -490,18 +490,18 @@ bitzec_cli_LDADD = \
   $(LIBZCASH_LIBS)
 #
 
-# bitzec-tx binary #
-bitzec_tx_SOURCES = bitcoin-tx.cpp
-bitzec_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-bitzec_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitzec_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# arnak-tx binary #
+arnakd_tx_SOURCES = bitcoin-tx.cpp
+arnakd_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+arnakd_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+arnakd_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-bitzec_tx_SOURCES += bitcoin-tx-res.rc
+arnakd_tx_SOURCES += bitcoin-tx-res.rc
 endif
 
 # FIXME: Is libzcash needed for zcash_tx?
-bitzec_tx_LDADD = \
+arnakd_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -511,7 +511,7 @@ bitzec_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBZCASH_LIBS)
 
-bitzec_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+arnakd_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # zcash protocol primitives #

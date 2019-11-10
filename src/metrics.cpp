@@ -461,7 +461,7 @@ void ThreadShowMetricsScreen()
         std::cout << std::endl;
 
         // Thank you text
-        std::cout << _("************* BITZEC [BZC] FULL Node! **************") << std::endl;
+        std::cout << _("************* ARNAK [ARK] FULL Node! **************") << std::endl;
         std::cout << _("THE BINARY DIGIT ZERO KNOWLEDGE ELECTRONIC CURRENCY") << std::endl;
 
         // Privacy notice text
@@ -514,7 +514,7 @@ void ThreadShowMetricsScreen()
             // Explain how to exit
             std::cout << "[";
 #ifdef WIN32
-            std::cout << _("'bitzec-cli.exe stop' to exit");
+            std::cout << _("'arnak-cli.exe stop' to exit");
 #else
             std::cout << _("Press Ctrl+C to exit");
 #endif

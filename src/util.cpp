@@ -460,12 +460,12 @@ boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
     // Windows < Vista: C:\Documents and Settings\Username\Application Data\Zcash
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Bitzec
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Arnak
     // Mac: ~/Library/Application Support/Zcash
-    // Unix: ~/.bitzec
+    // Unix: ~/.arnak
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Bitzec";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "Arnak";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -477,10 +477,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectory(pathRet);
-    return pathRet / "Bitzec";
+    return pathRet / "Arnak";
 #else
     // Unix
-    return pathRet / ".bitzec";
+    return pathRet / ".arnak";
 #endif
 #endif
 }
@@ -597,7 +597,7 @@ void ClearDatadirCache()
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "bitzec.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "arnak.conf"));
     if (!pathConfigFile.is_complete())
         pathConfigFile = GetDataDir(false) / pathConfigFile;
 
@@ -906,7 +906,7 @@ void SetThreadPriority(int nPriority)
 std::string PrivacyInfo()
 {
     return "\n" +
-           FormatParagraph(strprintf(_("bitzec.org <%s>."),
+           FormatParagraph(strprintf(_("arnak.org <%s>."),
                                      "https://bitcointalk.org/index.php?topic=5045890.0")) + "\n";
 }
 

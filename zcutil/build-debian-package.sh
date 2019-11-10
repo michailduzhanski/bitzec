@@ -6,7 +6,7 @@ set -e
 set -x
 
 BUILD_PATH="/tmp/zcbuild"
-PACKAGE_NAME="bitzec"
+PACKAGE_NAME="arnak"
 SRC_PATH=`pwd`
 SRC_DEB=$SRC_PATH/contrib/debian
 SRC_DOC=$SRC_PATH/doc
@@ -17,7 +17,7 @@ if [ ! -d $BUILD_PATH ]; then
     mkdir $BUILD_PATH
 fi
 
-PACKAGE_VERSION=$($SRC_PATH/src/bitzecd --version | grep version | cut -d' ' -f4 | tr -d v)
+PACKAGE_VERSION=$($SRC_PATH/src/arnakd --version | grep version | cut -d' ' -f4 | tr -d v)
 DEBVERSION=$(echo $PACKAGE_VERSION | sed 's/-beta/~beta/' | sed 's/-rc/~rc/' | sed 's/-/+/')
 BUILD_DIR="$BUILD_PATH/$PACKAGE_NAME-$PACKAGE_VERSION-amd64"
 
@@ -38,8 +38,8 @@ chmod 0755 -R $BUILD_DIR/*
 #cp $SRC_DEB/preinst $BUILD_DIR/DEBIAN
 #cp $SRC_DEB/prerm $BUILD_DIR/DEBIAN
 # Copy binaries
-cp $SRC_PATH/src/bitzecd $DEB_BIN
-cp $SRC_PATH/src/bitzec-cli $DEB_BIN
+cp $SRC_PATH/src/arnakd $DEB_BIN
+cp $SRC_PATH/src/arnak-cli $DEB_BIN
 cp $SRC_PATH/zcutil/fetch-params.sh $DEB_BIN/zcash-fetch-params
 # Copy docs
 cp $SRC_PATH/doc/release-notes/release-notes-1.0.0.md $DEB_DOC/changelog
@@ -47,23 +47,23 @@ cp $SRC_DEB/changelog $DEB_DOC/changelog.Debian
 cp $SRC_DEB/copyright $DEB_DOC
 cp -r $SRC_DEB/examples $DEB_DOC
 # Copy manpages
-cp $SRC_DOC/man/bitzecd.1 $DEB_MAN
-cp $SRC_DOC/man/bitzec-cli.1 $DEB_MAN
+cp $SRC_DOC/man/arnakd.1 $DEB_MAN
+cp $SRC_DOC/man/arnak-cli.1 $DEB_MAN
 cp $SRC_DOC/man/zcash-fetch-params.1 $DEB_MAN
 # Copy bash completion files
-cp $SRC_PATH/contrib/bitzecd.bash-completion $DEB_CMP/bitzecd
-cp $SRC_PATH/contrib/bitzec-cli.bash-completion $DEB_CMP/bitzec-cli
+cp $SRC_PATH/contrib/arnakd.bash-completion $DEB_CMP/arnakd
+cp $SRC_PATH/contrib/arnak-cli.bash-completion $DEB_CMP/arnak-cli
 # Gzip files
 gzip --best -n $DEB_DOC/changelog
 gzip --best -n $DEB_DOC/changelog.Debian
-gzip --best -n $DEB_MAN/bitzecd.1
-gzip --best -n $DEB_MAN/bitzec-cli.1
+gzip --best -n $DEB_MAN/arnakd.1
+gzip --best -n $DEB_MAN/arnak-cli.1
 gzip --best -n $DEB_MAN/zcash-fetch-params.1
 
 cd $SRC_PATH/contrib
 
 # Create the control file
-dpkg-shlibdeps $DEB_BIN/bitzecd $DEB_BIN/bitzec-cli
+dpkg-shlibdeps $DEB_BIN/arnakd $DEB_BIN/arnak-cli
 dpkg-gencontrol -P$BUILD_DIR -v$DEBVERSION
 
 # Create the Debian package
