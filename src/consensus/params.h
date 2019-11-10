@@ -82,10 +82,14 @@ struct Params {
      * t_h = nSubsidyHalvingInterval
      * t_c = SubsidySlowStartShift()
      */
-    int SubsidySlowStartShift() const { return nSubsidySlowStartInterval / 2; }
+    int SubsidySlowStartShift() const { 
+return 0;
+//return nSubsidySlowStartInterval / 2;
+ }
     int nSubsidyHalvingInterval;
     int GetLastFoundersRewardBlockHeight() const {
-        return nSubsidyHalvingInterval + SubsidySlowStartShift() - 1;
+return 0;
+//        return nSubsidyHalvingInterval + SubsidySlowStartShift() - 1;
     }
     /** Used to check majorities for block version upgrade */
     int nMajorityEnforceBlockUpgrade;

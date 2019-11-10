@@ -555,7 +555,8 @@ void static BitcoinMiner(const CChainParams& chainparams)
             throw std::runtime_error("No coinbase script available (mining requires a wallet or -mineraddress)");
 
         while (true) {
-            if (chainparams.MiningRequiresPeers()) {
+//            if (chainparams.MiningRequiresPeers()) {
+if(false){
                 // Busy-wait for the network to come online so we don't waste time mining
                 // on an obsolete chain. In regtest mode we expect to fly solo.
                 miningTimer.stop();

@@ -1744,70 +1744,40 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
-    CAmount nSubsidy = 21000 * COIN;
+    CAmount nSubsidy = 32 * COIN;
 
     // Mining slow start
     // The subsidy is ramped up linearly, skipping the middle payout of
     // MAX_SUBSIDY/2 to keep the monetary curve consistent with no slow start.
-    if (nHeight < consensusParams.nSubsidySlowStartInterval / 2) {
-        nSubsidy /= consensusParams.nSubsidySlowStartInterval;
-        nSubsidy *= nHeight;
-        return nSubsidy;
-    } else if (nHeight < consensusParams.nSubsidySlowStartInterval) {
-        nSubsidy /= consensusParams.nSubsidySlowStartInterval;
-        nSubsidy *= (nHeight+1);
-        return nSubsidy;
-    }
+    //if (nHeight < consensusParams.nSubsidySlowStartInterval / 2) {
+    //    nSubsidy /= consensusParams.nSubsidySlowStartInterval;
+    //    nSubsidy *= nHeight;
+    //    return nSubsidy;
+    //} else if (nHeight < consensusParams.nSubsidySlowStartInterval) {
+    //    nSubsidy /= consensusParams.nSubsidySlowStartInterval;
+    //    nSubsidy *= (nHeight+1);
+    //    return nSubsidy;
+    //}
 
-    assert(nHeight > consensusParams.SubsidySlowStartShift());
+    //assert(nHeight > consensusParams.SubsidySlowStartShift());
 
-if ( nHeight < 77777 ) nSubsidy = (21000 * COIN);
-    else if ( nHeight < 97777 ) nSubsidy = (20000 * COIN); //+20k blocks
-    else if ( nHeight < 117777 ) nSubsidy = (19000 * COIN);
-    else if ( nHeight < 137777 ) nSubsidy = (18000 * COIN);
-    else if ( nHeight < 157777 ) nSubsidy = (17000 * COIN);
-    else if ( nHeight < 177777 ) nSubsidy = (16000 * COIN);
-    else if ( nHeight < 197777 ) nSubsidy = (15000 * COIN);
-    else if ( nHeight < 217777 ) nSubsidy = (14000 * COIN);
-    else if ( nHeight < 237777 ) nSubsidy = (13000 * COIN);
-    else if ( nHeight < 257777 ) nSubsidy = (12000 * COIN);
-    else if ( nHeight < 277777 ) nSubsidy = (11000 * COIN);
-    else if ( nHeight < 297777 ) nSubsidy = (10000 * COIN);
-    else if ( nHeight < 317777 ) nSubsidy = (9000 * COIN);
-    else if ( nHeight < 337777 ) nSubsidy = (8000 * COIN);
-    else if ( nHeight < 367777 ) nSubsidy = (7000 * COIN); //+30k blocks
-    else if ( nHeight < 417777 ) nSubsidy = (6000 * COIN); //+50k blocks
-    else if ( nHeight < 467777 ) nSubsidy = (5000* COIN);
-    else if ( nHeight < 517777 ) nSubsidy = (4000 * COIN);
-    else if ( nHeight < 567777 ) nSubsidy = (3000 * COIN);
-    else if ( nHeight < 617777 ) nSubsidy = (2000 * COIN);
-    else if ( nHeight < 667777 ) nSubsidy = (1000 * COIN);
-    else if ( nHeight < 717777 ) nSubsidy = (900 * COIN);
-    else if ( nHeight < 777777 ) nSubsidy = (777 * COIN);
-    else if ( nHeight < 817777 ) nSubsidy = (700 * COIN);
-    else if ( nHeight < 867777 ) nSubsidy = (600 * COIN);
-    else if ( nHeight < 917777 ) nSubsidy = (500 * COIN);
-    else if ( nHeight < 967777 ) nSubsidy = (400 * COIN);
-    else if ( nHeight < 1017777 ) nSubsidy = (300 * COIN);
-    else if ( nHeight < 1067777 ) nSubsidy = (200 * COIN);
-    else if ( nHeight < 1117777 ) nSubsidy = (100 * COIN);
-    else if ( nHeight < 1167777 ) nSubsidy = (77 * COIN);
-    else if ( nHeight < 1217777 ) nSubsidy = (47 * COIN);
-    else if ( nHeight < 1267777 ) nSubsidy = (37 * COIN);
-    else if ( nHeight < 1317777 ) nSubsidy = (27 * COIN);
-    else if ( nHeight < 1367777 ) nSubsidy = (17 * COIN);
-    else {
-        int halvings = (nHeight - 1367776) / consensusParams.nSubsidyHalvingInterval;
+    if ( nHeight == 1 ) nSubsidy = (200000000 * COIN);
+    else if ( nHeight <= 1000000 ) nSubsidy = (32 * COIN);
+    else if ( nHeight <= 2000000 ) nSubsidy = (16 * COIN);
+    else if ( nHeight <= 3000000 ) nSubsidy = (8 * COIN);
+    else if ( nHeight <= 4000000 ) nSubsidy = (4 * COIN);
+    else if ( nHeight <= 5000000 ) nSubsidy = (2 * COIN);
+    else if ( nHeight <= 6000000 ) nSubsidy = (1 * COIN);
+    else if ( nHeight <= 7000000 ) nSubsidy = (0.5 * COIN);
+    else if ( nHeight <= 8000000 ) nSubsidy = (0.25 * COIN);
+    else if ( nHeight <= 9000000 ) nSubsidy = (0.125 * COIN);
+    else nSubsidy = (0.0625 * COIN);
 
-        nSubsidy=7 * COIN;
+    //int halvings = consensusParams.Halving(nHeight);
 
-        if(nSubsidy >= 64){
-            nSubsidy = 0;
-        }else{
-        	nSubsidy >>= halvings;
-        }
-
-    }
+    // Force block reward to zero when right shift is undefined.
+    //if (halvings >= 64)
+    //    return 0;
     return nSubsidy;
 }
 
