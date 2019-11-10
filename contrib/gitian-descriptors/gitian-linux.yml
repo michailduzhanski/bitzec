@@ -1,5 +1,5 @@
 ---
-name: "bitzec-1.1.6"
+name: "arnak-1.1.6"
 enable_cache: true
 distro: "debian"
 suites:

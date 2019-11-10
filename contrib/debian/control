@@ -1,16 +1,16 @@
-Source: bitzec
+Source: arnak
 Section: utils
 Priority: optional
-Maintainer: bitzec  <>
-Homepage: https://bitzec.org
+Maintainer: arnak  <>
+Homepage: https://arnak.com
 Build-Depends: autoconf, automake, bsdmainutils, build-essential,
  git, g++-multilib, libc6-dev, libtool,
  m4, ncurses-dev, pkg-config, python,
  unzip, wget, zlib1g-dev
-Vcs-Git: https://github.com/bitzec/bitzec.git
-Vcs-Browser: https://github.com/bitzec/bitzec
+Vcs-Git: https://github.com/michailduzhanski/arnak.git
+Vcs-Browser: https://github.com/michailduzhanski/arnak
 
-Package: bitzec
+Package: arnak
 Architecture: amd64
 Depends: ${shlibs:Depends}
 Description:Binary Digit Zero knowledge Electronic Currency
