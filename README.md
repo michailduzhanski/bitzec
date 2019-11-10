@@ -127,7 +127,7 @@ online http://explorer.arnak.org
 
   
 <p align="center">
-  <img src="doc/imgs/bitzec_insight.png" height="500">
+  <img src="doc/imgs/arnak_insight.png" height="500">
 </p>
 
 
