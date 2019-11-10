@@ -467,16 +467,16 @@ arnakd_LDADD += \
   $(LIBZCASH_LIBS)
 
 # bitcoin-cli binary #
-arnakd_cli_SOURCES = bitcoin-cli.cpp
-arnakd_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-arnakd_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-arnakd_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+arnak_cli_SOURCES = bitcoin-cli.cpp
+arnak_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+arnak_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+arnak_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-arnakd_cli_SOURCES += bitcoin-cli-res.rc
+arnak_cli_SOURCES += bitcoin-cli-res.rc
 endif
 
-arnakd_cli_LDADD = \
+arnak_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL) \
@@ -491,17 +491,17 @@ arnakd_cli_LDADD = \
 #
 
 # arnak-tx binary #
-arnakd_tx_SOURCES = bitcoin-tx.cpp
-arnakd_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-arnakd_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-arnakd_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+arnak_tx_SOURCES = bitcoin-tx.cpp
+arnak_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+arnak_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+arnak_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-arnakd_tx_SOURCES += bitcoin-tx-res.rc
+arnak_tx_SOURCES += bitcoin-tx-res.rc
 endif
 
 # FIXME: Is libzcash needed for zcash_tx?
-arnakd_tx_LDADD = \
+arnak_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -511,7 +511,7 @@ arnakd_tx_LDADD = \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBZCASH_LIBS)
 
-arnakd_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+arnak_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # zcash protocol primitives #
